@@ -6,7 +6,9 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import br.com.zupacademy.joao.casadocodigo.modelo.Autor;
+import br.com.zupacademy.joao.casadocodigo.validator.EmailAutorDuplicado;
 
+@EmailAutorDuplicado
 public class ReceberAutorDto {
 
 	@NotBlank @Length(min = 3, max = 30)
