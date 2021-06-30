@@ -1,4 +1,4 @@
-package br.com.zupacademy.joao.casadocodigo.config.validacao;
+package br.com.zupacademy.joao.casadocodigo.config.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +21,19 @@ public class ErroValidacaoHandler {
 	private MessageSource messageSource;
 
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity handle(MethodArgumentNotValidException exception) {
-		List<String> globalErrors = new ArrayList<String>();
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+	public ResponseEntity<?> handle(MethodArgumentNotValidException exception) {
+		List<String> globalErros = new ArrayList<>();
+
 		if (exception.getBindingResult().hasFieldErrors()) {
-			globalErrors = exception.getBindingResult().getFieldErrors().stream().map(
+			globalErros = exception.getBindingResult().getFieldErrors().stream().map(
 					error -> error.getField() + ": " + messageSource.getMessage(error, LocaleContextHolder.getLocale()))
 					.collect(Collectors.toList());
-			return new ResponseEntity<List<String>>(globalErrors, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<List<String>>(globalErros, HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity(exception.getBindingResult().getAllErrors(), HttpStatus.BAD_REQUEST);
+
+		return new ResponseEntity<>(exception.getBindingResult().getAllErrors(), HttpStatus.BAD_REQUEST);
+
 	}
 
 }
