@@ -5,9 +5,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
-import br.com.zupacademy.joao.casadocodigo.autor.validacao.EmailAutorDuplicado;
+import br.com.zupacademy.joao.casadocodigo.config.handler.UniqueValue;
 
-@EmailAutorDuplicado
 public class ReceberAutorDto {
 
 	@NotBlank
@@ -16,7 +15,7 @@ public class ReceberAutorDto {
 
 	@NotBlank
 	@Length(min = 5, max = 30)
-	@Email
+	@Email @UniqueValue(clazz = Autor.class, fieldName = "email", message = "E-mail já existe!")
 	private String email;
 
 	@NotBlank

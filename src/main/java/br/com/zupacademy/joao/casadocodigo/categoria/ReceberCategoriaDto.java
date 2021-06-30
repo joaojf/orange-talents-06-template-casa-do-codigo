@@ -4,12 +4,13 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-import br.com.zupacademy.joao.casadocodigo.categoria.validacao.NomeCategoriaDuplicado;
+
+import br.com.zupacademy.joao.casadocodigo.config.handler.UniqueValue;
 
 public class ReceberCategoriaDto {
 
 	@NotBlank
-	@NomeCategoriaDuplicado(instacerClass = Categoria.class, field = "nome")
+	@UniqueValue(clazz = Categoria.class, fieldName = "nome", message = "Categoria já existe!")
 	private String nome;
 
 	@JsonCreator(mode = Mode.PROPERTIES)
