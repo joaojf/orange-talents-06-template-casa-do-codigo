@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/categorias")
 public class CategoriaController {
 	
-private CategoriaRepository repositoryCategoria;
+	private CategoriaRepository repositoryCategoria;
 	
 	@Autowired
 	public CategoriaController(CategoriaRepository repositoryCategoria) {

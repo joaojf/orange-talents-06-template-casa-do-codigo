@@ -40,6 +40,10 @@ public class Autor {
 		this.email = email;
 		this.descricao = descricao;
 	}
+	
+	public Autor(Long id) {
+        this.id = id;
+    }
 
 	public Long getId() {
 		return id;

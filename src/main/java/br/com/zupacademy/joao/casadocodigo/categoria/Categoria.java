@@ -25,6 +25,14 @@ public class Categoria {
 	public Categoria(String nome) {
 		this.nome = nome;
 	}
+	
+	public Categoria(Long id) {
+        this.id = id;
+    }
+
+	public Long getId() {
+		return id;
+	}
 
 	public String getNome() {
 		return nome;

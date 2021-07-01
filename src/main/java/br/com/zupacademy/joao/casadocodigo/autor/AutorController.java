@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/autores")
 public class AutorController {
 	
-private AutorRepository repositoryAutor;
+	private AutorRepository repositoryAutor;
 	
 	@Autowired
 	public AutorController(AutorRepository repositoryAutor) {

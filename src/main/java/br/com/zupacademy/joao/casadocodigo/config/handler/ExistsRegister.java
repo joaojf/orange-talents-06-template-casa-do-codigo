@@ -10,19 +10,17 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = {UniqueValueValidator.class})
-@Target({ ElementType.FIELD})
+@Constraint(validatedBy = { ExistsRegisterValidator.class })
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueValue {
-	
-	String message() default "Registro já está cadastro!";
-	
-	Class<?>[] groups() default { };
-	
-	Class<? extends Payload>[] payload() default { };
-	
-	String fieldName();
-	
-	Class<?> clazz();
+public @interface ExistsRegister {
+
+	String message() default "Não existe registro relacionado a este identificador unico";
+
+	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
+
+	Class<?> domainClass();
 
 }
