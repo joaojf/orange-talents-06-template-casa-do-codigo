@@ -8,10 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -38,12 +36,10 @@ public class Livro {
 	@Column(nullable = false)
 	private String sumario;
 
-	
 	@Min(value = 20)
 	@Column(nullable = false)
 	private Double price;
 
-	
 	@Min(value = 100)
 	@Column(nullable = false)
 	private Integer numPaginas;
@@ -77,8 +73,6 @@ public class Livro {
 		this.categoria = categoria;
 		this.autor = autor;
 	}
-
-
 
 	public Long getId() {
 		return id;

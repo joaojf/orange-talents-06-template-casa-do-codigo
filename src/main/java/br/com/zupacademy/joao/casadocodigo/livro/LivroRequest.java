@@ -55,22 +55,6 @@ public class LivroRequest {
 	@ExistsRegister(domainClass = Autor.class)
 	private Long autorId;
 
-//	@JsonCreator(mode = Mode.PROPERTIES)
-//	public LivroRequest(@NotBlank String titulo, @NotBlank @Length(max = 500) String resumo, @NotBlank String sumario,
-//			@NotEmpty @Min(20) Double price, @NotEmpty @Min(100) Integer numPaginas, @NotBlank String isbn,
-//			@Future LocalDate dataPublicacao, Long categoriaId, Long autorId) {
-//		super();
-//		this.titulo = titulo;
-//		this.resumo = resumo;
-//		this.sumario = sumario;
-//		this.price = price;
-//		this.numPaginas = numPaginas;
-//		this.isbn = isbn;
-//		this.dataPublicacao = dataPublicacao;
-//		this.categoriaId = categoriaId;
-//		this.autorId = autorId;
-//	}
-
 	public Livro converte(AutorRepository autorRepositoy, CategoriaRepository categoriaRepositoy) {
 		Optional<Autor> optionalAutor = autorRepositoy.findById(autorId);
 		Optional<Categoria> optionalCategoria = categoriaRepositoy.findById(categoriaId);
