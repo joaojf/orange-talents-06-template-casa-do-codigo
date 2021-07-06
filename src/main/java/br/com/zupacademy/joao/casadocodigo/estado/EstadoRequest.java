@@ -13,27 +13,26 @@ import br.com.zupacademy.joao.casadocodigo.pais.PaisRepository;
 
 @EstadoJaExisteNoPais
 public class EstadoRequest {
-	
+
 	@NotBlank
-    private String nome;
+	private String nome;
 
-    @NotNull
-    @SeExiste(clazz = Pais.class, fieldName = "id")
-    
-    private Long idPais;
+	@NotNull
+	@SeExiste(clazz = Pais.class, fieldName = "id")
+	private Long idPais;
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Long getIdPais() {
-        return idPais;
-    }
+	public Long getIdPais() {
+		return idPais;
+	}
 
-    public Estado converte(PaisRepository paisRepository){
-        Optional<Pais> optionalPais = paisRepository.findById(this.idPais);
-        Pais pais = optionalPais.orElseThrow(() -> new ObjectNotFoundException("Objeto País não encontrado"));
-        return new Estado(nome, pais);
-    }
+	public Estado converte(PaisRepository paisRepository) {
+		Optional<Pais> optionalPais = paisRepository.findById(this.idPais);
+		Pais pais = optionalPais.orElseThrow(() -> new ObjectNotFoundException("Objeto País não encontrado"));
+		return new Estado(nome, pais);
+	}
 
 }
